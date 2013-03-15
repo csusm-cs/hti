@@ -44,7 +44,7 @@ public class NuclearData {
      */
     public void addSample(SampleData samp, String plateName, int row, int col) {
     	int pid = getPlateId(plateName);
-    	int sid = (row*numCols + col);
+    	int sid = getWellId(row, col);
     	plates.get(pid).addSample(samp, sid);
     }
     
@@ -64,4 +64,8 @@ public class NuclearData {
 		plates.add(plate);
 		return size;
     }
+	
+	private int getWellId(int row, int col) {
+		return (col*numRows + row);
+	}
 }
